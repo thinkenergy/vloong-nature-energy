@@ -2,7 +2,7 @@
 
 项目和代码的规范和可读性对于项目开发至关重要，可以提升开发效率。本文给出开发者在新建开发者生态项目时的repo目录示例，以供参考。
 
-本文示例项目在文件夹[repo_template](https://github.com/PaddlePaddle/models/blob/release/2.2/community/repo_template)下，您可以将这个文件夹中的内容拷贝出去，放在自己的项目文件夹下，并编写对应的代码与文档。
+本文示例项目在文件夹[repo_template](https://github.com/thinkenergy/vloong-nature-energy/blob/master/repo_template)下，您可以将这个文件夹中的内容拷贝出去，放在自己的项目文件夹下，并编写对应的代码与文档。
 
 注意： 该模板中仅给出了必要的代码结构，剩余部分，如模型组网、损失函数、数据处理等，与参考repo中的结构尽量保持一致，便于复现即可。
 
@@ -127,7 +127,8 @@ class BatteryDataset(Dataset):
 文件头内LICENSE格式如下：
 
 ```Plaintext
-#encoding=utf8
+# encoding=utf8
+# Copyright (c) 2021 Circue Authors. All Rights Reserved
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -185,7 +186,7 @@ secondary_test_idx = np.arange((numBatch1 + numBatch2), 124)
 
 ## 7. README 内容&格式说明
 
-模型的readme共分为以下几个部分，可以参考模板见：[README模板](https://thinkenergy.feishu.cn/docx/doxcnMY2aaJjI4xymjqxhwUDkQj?from=from_copylink) 
+模型的readme共分为以下几个部分，可以参考模板见：[README模板](https://github.com/thinkenergy/vloong-nature-energy/blob/master/README模板.md) 
 
 ```Plaintext
 # 模型名称

@@ -84,7 +84,7 @@
 
 ## 6. LICENSE
 
-- 本项目的发布受[Apache 2.0 license](https://github.com/PaddlePaddle/models/blob/release/2.2/community/repo_template/LICENSE)许可认证。
+- 本项目的发布受[Apache 2.0 license](https://github.com/thinkenergy/vloong-nature-energy/blob/master/LICENSE)许可认证。
 
 
 
@@ -94,4 +94,4 @@
 
 - **[Data-driven prediction of battery cycle life before capacity degradation](https://doi.org/10.1038/s41560-019-0356-8)**
 
-- 2019 Data-driven prediction of battery cycle life before capacity degradation.pdf
+  
