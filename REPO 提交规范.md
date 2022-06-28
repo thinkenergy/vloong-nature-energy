@@ -14,37 +14,41 @@
 
 ```Plaintext
 ./repo_template               # 项目文件夹名称，可以修改为自己的文件夹名称
-|-- preprocess                # 预处理类文件夹
-|   ├── dataset.py            # 数据集代码文件
 |-- config                    # 配置类文件夹
 |   ├── competition.json      # 项目配置信息文件
-|-- tools                     # 工具类文件夹
-|   ├── train.py              # 训练代码文件
-|   ├── eval.py               # 验证代码文件
+|-- dataset                   # 数据集类文件夹
+|   ├── dataset.py            # 数据集代码文件
 |-- log                       # 日志类文件夹
 |   ├── train.log             # 训练日志文件
 |-- model                     # 模型类文件夹
 |   ├── full_regression.pkl   # 训练好的模型文件
-|-- scripts                   # 脚本类文件夹
-|   ├── train.sh              # 训练脚本，提供单机单卡的训练方式即可
-|   ├── eval.sh               # 验证脚本，提供单机单卡的验证方式即可
+|-- preprocess                # 预处理类文件夹
+|   ├── preprocess.py         # 数据预处理代码文件
+|-- tools                     # 工具类文件夹
+|   ├── train.py              # 训练代码文件
+|   ├── eval.py               # 验证代码文件
+|-- main.py                   # 项目主文件
 |-- README.md                 # 中文用户手册
 |-- LICENSE                   # LICENSE文件
 ```
 
-- preprocess：预处理类文件夹，包含数据预处理、构建数据集等代码文件
-
 - config：项目配置类文件夹，包含项目配置信息等文件
+
+- dataset：数据集类文件夹，包含构建数据集等代码文件
+
+- log：日志类文件夹，包含训练日志等文件
+
+- model：模型类文件夹，包含训练好的模型文件
+
+- preprocess：预处理类文件夹，包含数据预处理等代码文件
 
 - tools： 工具类文件夹，包含训练、验证等代码文件
 
-- scripts： 脚本类文件夹，包含训练、验证等脚本文件
+- main.py：项目主文件，可进行项目全流程（训练+验证）执行过程
 
 - README.md： 中文版当前模型的使用说明，规范参考 README 内容要求
 
 - LICENSE： LICENSE文件
-
-
 
 ## 2. 功能实现
 
@@ -54,9 +58,9 @@
 
 - 验证：可以在GPU单机单卡的环境下执行验证
 
-- 模型及训练日志保存：保存已完成训练的模型、导出训练日志以进行验证
+- 项目主文件全流程执行：可以进行项目全流程（训练+验证）执行过程，并在GPU单机单卡的环境下执行
 
-
+- 模型保存：保存已完成训练的模型，并且模型是可以根据参赛队伍提供的代码重新生成的，不能存在任何通过黑箱得到的模型，否则将认定为作弊行为
 
 ## 3. 命名规范和使用规范
 
@@ -85,9 +89,24 @@
 如：
 
 ```undefined
-import pandas as pd
-import torch
+# encoding=utf8
+# Copyright (c) 2022 Circue Authors. All Rights Reserved
 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+#     http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+
+import torch
+import pandas as pd
 from torch.utils.data import Dataset
 
 
@@ -128,7 +147,7 @@ class BatteryDataset(Dataset):
 
 ```Plaintext
 # encoding=utf8
-# Copyright (c) 2021 Circue Authors. All Rights Reserved
+# Copyright (c) 2022 Circue Authors. All Rights Reserved
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -155,7 +174,7 @@ NatureEnergy数据共有三个数据集：
 
 **batch3**：2018-04-12_batchdata_updated_struct_errorcorrect.mat        **cell数**：numBatch1 = 40
 
-需要将三个batch的数据合并后划分为**train**、**primary_test**、**secondary_test**三个数据集，数据集划分要求如下：
+需要将三个batch的数据合并后划分为**train**、**primary_test**、**secondary_test**三个数据集，数据集**必须**按照以下要求划分：
 
 ```undefined
 # train由(batch1+batch2)中索引编号为单数的cell组成数据集 [1,3,5,7,9,11,...,81,83]
@@ -171,8 +190,6 @@ secondary_test_idx = np.arange((numBatch1 + numBatch2), 124)
 
 
 ## 6. 其他问题
-
-- 提供训练日志(train.log)文件，训练日志中需要包含loss、验证集精度（如果训练时开启评估），当前的epoch和iter数量
 
 - 代码封装得当，易读性好，不用一些随意的变量/类/函数命名
 
@@ -203,7 +220,7 @@ secondary_test_idx = np.arange((numBatch1 + numBatch2), 124)
 
 ## 8. train.log 日志文件格式说明
 
-参赛队伍需提供训练日志(train.log)文件，训练日志中需要包含当前的epoch和iter数量，当前loss、当前数据集精度
+参赛队伍若使用神经网络模型则需提供训练日志(train.log)文件，训练日志中需要包含当前的epoch和iter数量，当前loss、当前数据集精度
 
 ```undefined
 from loguru import logger
