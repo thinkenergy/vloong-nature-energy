@@ -36,7 +36,7 @@
 
 ### 4.1 模型训练
 
-- 简单说明一下训练（eval.py）的命令，建议附一些简短的训练日志。
+- 简单说明一下训练（train.py）的命令，建议附一些简短的训练日志。
 
 - 可以简要介绍下可配置的超参数以及配置方法。
 
@@ -48,11 +48,9 @@
 
 - 在这里简单说明一下项目主文件（main.py）的命令，main.py中可执行全流程（train+eval）过程。
 
+## 5. 代码结构与简要说明
 
-
-## 5.代码结构与简要说明
-
-### 5.1代码结构
+### 5.1 代码结构
 
 - 列出代码目录结构
 
@@ -76,7 +74,7 @@
 |-- LICENSE                   # LICENSE文件
 ```
 
-### 5.2代码简要说明
+### 5.2 代码简要说明
 
 - 说明代码文件中的类以及主要函数功能
 
@@ -98,7 +96,8 @@
 
 ## 7. 参考链接与文献
 
-- [vloong-nature-energy/repo_template at master thinkenergy/vloong-nature-energy](https://github.com/thinkenergy/vloong-nature-energy/tree/master/repo_template)
+- **[vloong-nature-energy/repo_template at master thinkenergy/vloong-nature-energy](https://github.com/thinkenergy/vloong-nature-energy/tree/master/repo_template)**
 
-- [Data-driven prediction of battery cycle life before capacity degradation](https://doi.org/10.1038/s41560-019-0356-8)
+- **[Data-driven prediction of battery cycle life before capacity degradation](https://doi.org/10.1038/s41560-019-0356-8)**
 
+  
